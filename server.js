@@ -36,15 +36,13 @@ app.get('/contents', async (req, res) => {
             error: "Error al conectar o consultar la base de datos",
             descrption: error.message
         });
-    } finally {
-        sequelize.close();
-    }
+    } 
 });
 
 // traer registro por clave primaria:
-app.get("/contents/:IdContent", async (req, res) => {
+app.get("/contents/:idContent", async (req, res) => {
     try {
-        const { IdContent } = req.params;
+        const { idContent } = req.params;
         const contents = await Contents.findByPk(idContent);
 
         !contents
